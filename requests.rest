@@ -1,1 +1,13 @@
 GET http://localhost:3000/postsnews
+
+### Get accessToken
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "Kim"
+}
+
+### Get data by accessToken → should be "Kim"
+GET http://localhost:3000/postsnews
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2ltIiwiaWF0IjoxNjMzMTAyODc2fQ.V5F2nkmVzwgf2yLDA_4i8RpdiBfwwL1yBD3Hzy49GZU
