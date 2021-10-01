@@ -21,16 +21,6 @@ app.get('/postsnews', authenticateToken,(req,res)=>{
     res.json(postsnews.filter(postsnew=>postsnew.username === req.user.name))
 })
 
-app.post('/login', (req,res)=>{
-    //使用者驗證，產生accessToken
-
-    const username=req.body.username
-    const user={ name: username }
-
-    const accessToken= jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
-    res.json({ accessToken: accessToken })
-})
-
 //驗證token
 function authenticateToken( req, res, next){
     const authHeader= req.headers['authorization']
@@ -44,4 +34,4 @@ function authenticateToken( req, res, next){
     })
 }
 
-app.listen(3000)
+app.listen(3200)

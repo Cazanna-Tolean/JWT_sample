@@ -1,13 +1,35 @@
-GET http://localhost:3000/postsnews
-
-### Get accessToken
-POST http://localhost:3000/login
+### (1-1)Get accessToken
+POST http://localhost:4000/login
 Content-Type: application/json
 
 {
     "username": "Kim"
 }
 
-### Get data by accessToken → should be "Kim"
-GET http://localhost:3000/postsnews
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2ltIiwiaWF0IjoxNjMzMTAyODc2fQ.V5F2nkmVzwgf2yLDA_4i8RpdiBfwwL1yBD3Hzy49GZU
+### (1-2)Test accessToken Expiration
+GET http://localhost:3200/postsnews
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiS2ltIiwiaWF0IjoxNjMzMTExODM0LCJleHAiOjE2MzMxMTE4NDl9.u_E0A9f6XmcfCMZqd4iqT8mne6SW3BBqK52eMBpGHiM
+
+### (2-1)Get refreshToken
+POST http://localhost:4000/login
+Content-Type: application/json
+
+{
+    "username": "John"
+}
+
+### (2-2)Get new accessToken
+POST http://localhost:4000/token
+Content-Type: application/json
+
+{
+    "token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSm9obiIsImlhdCI6MTYzMzExMjE0MH0.QLeEGeWJPELE71b0lgU-ZGN48WDhx7ZeILpSzK7W7-Y"
+}
+
+### (3)Delete token
+DELETE  http://localhost:4500/logout
+Content-Type: application/json
+
+{
+    "token":
+}
